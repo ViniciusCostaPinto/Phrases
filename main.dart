@@ -9,12 +9,10 @@ import 'package:flutter/material.dart';
 */
 
 void main() {
-  runApp(
-      MaterialApp(
-          debugShowCheckedModeBanner: true,
-          home: HomeStateful(),
-      )
-  ); // runApp
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: true,
+    home: HomeStateful(),
+  )); // runApp
 } // Main
 
 //
@@ -23,46 +21,40 @@ class HomeStateful extends StatefulWidget {
   @override
   //_HomeStatefulState createState() => _HomeStatefulState();
   State<HomeStateful> createState() => _HomeStatefulState();
-
 }
 
 // Uma instância de Stateless
 //class Home extends StatelessWidget {
 class _HomeStatefulState extends State<HomeStateful> {
-  static List <String> frases = [
-    "Gratidão não é pagamento... ",
-    "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-    "Cccccccccccccccccccccccccccccccccccccccccccc",
-    "D d d d d d d d d d d d d d",
-    "E e e e e e e e e e e e e e"
+  static List<String> frases = [
+    "A persistência é o caminho do êxito.",
+    "A vantagem de ter péssima memória é divertir-se muitas vezes com as mesmas coisas boas como se fosse a primeira vez",
+    "As convicções são inimigas mais perigosas da verdade do que as mentiras.",
+    "Não há fatos eternos, como não há verdades absolutas.",
+    "Logo que, numa inovação, nos mostram alguma coisa de antigo, ficamos sossegados.",
+    "É pelas próprias virtudes que se é mais bem castigado."
   ];
   static Map msgs = {
-    "titulo":"Frases do Dia v1.0.0",
-    "btnNovaFrase":"Nova Frase",
-    "rodaPe1":"Conteúdo Roda Pé 2",
-    "rodaPe2":"Conteúdo Roda Pé 1",
+    "titulo": "Frases do Dia v1.0.0",
+    "btnNovaFrase": "Nova Frase",
+    "rodaPe1": "CopyRigth '2021",
+    "rodaPe2": "Vinicius Costa Pinto",
   };
   static int indice = 0;
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold(
-        appBar: AppBar(
-          title: Text(
-            msgs["titulo"],
-            style: TextStyle(
-              color: Colors.black
-            ) ,
-          ),
-          backgroundColor: Colors.cyanAccent,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          msgs["titulo"],
+          style: TextStyle(color: Colors.black),
         ),
-        body: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              border: Border.all()
-            ),
-            child: Column(
+        backgroundColor: Colors.cyanAccent,
+      ),
+      body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(border: Border.all()),
+          child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
@@ -70,10 +62,7 @@ class _HomeStatefulState extends State<HomeStateful> {
                   padding: EdgeInsets.all(3),
                   child: Container(
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 3,
-                        color: Colors.deepPurple
-                      ),
+                      border: Border.all(width: 3, color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Image.asset(
@@ -83,141 +72,49 @@ class _HomeStatefulState extends State<HomeStateful> {
                     ),
                   ),
                 ),
-                Text(
-                  frases[indice],
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    decorationThickness: 11
-                  )
-                ),
+                Text(frases[indice],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(decorationThickness: 11)),
                 ElevatedButton(
-                  onPressed: () =>
-                  setState( () =>
-                    indice = Random().nextInt(frases.length)
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor:MaterialStateProperty.all<Color>(
-                      Colors.deepPurpleAccent
+                    onPressed: () => setState(
+                        () => indice = Random().nextInt(frases.length)),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.deepPurpleAccent),
+                      visualDensity: VisualDensity(horizontal: 3, vertical: 4),
+                      shadowColor:
+                          MaterialStateProperty.all<Color>(Colors.black12),
                     ),
-                    visualDensity: VisualDensity(horizontal: 3,vertical:4 ),
-                    shadowColor: MaterialStateProperty.all<Color>(
-                      Colors.black12
-                    ),
-                  ),
-                  child: Text(
-                    msgs["btnNovaFrase"],
-                    textAlign: TextAlign.start,
-                    textScaleFactor: 1.5,
-                    style: TextStyle(
-                      color: Colors.deepOrangeAccent,
-                      height: 1.5,
-                      fontSize: 19,
-                    ),
-                  )
+                    child: Text(
+                      msgs["btnNovaFrase"],
+                      textAlign: TextAlign.start,
+                      textScaleFactor: 1.5,
+                      style: TextStyle(
+                        color: Colors.deepOrangeAccent,
+                        height: 1.5,
+                        fontSize: 19,
+                      ),
+                    )),
+              ])),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.teal,
+        child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  msgs["rodaPe1"],
+                  textAlign: TextAlign.center,
                 ),
-              ]
-            )
-        ),
-        bottomNavigationBar:BottomAppBar(
-          color: Colors.teal,
-          child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    msgs["rodaPe1"],
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    msgs["rodaPe2"],
-                    textAlign: TextAlign.center,
-                  )
-                ],
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-              )
-          ),
-        ),
-      );
+                Text(
+                  msgs["rodaPe2"],
+                  textAlign: TextAlign.center,
+                )
+              ],
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+            )),
+      ),
+    );
   }
 }
-
-/*
-    //debugShowCheckedModeBanner: false,
-    title: "Frases do dia",
-    //home: Container(color: Colors.blue,),
-    home: Container(
-      padding: EdgeInsets.fromLTRB(10, 20, 30, 40),
-        margin: EdgeInsets.only(top:20,bottom:20),
-        decoration: BoxDecoration(
-            border: Border.all( width: 1,
-                                color: Colors.white
-            )
-      ),
-      //color: Colors.white,
-      child: Column(
-        children:<Widget> [
-          Text("Etiam venenatis odio ut lorem ullamcorper, ",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-               fontSize: 16,
-               fontStyle: FontStyle.italic,
-               decoration: TextDecoration.none,
-               decorationColor: Colors.white,
-               color: Colors.blue,
-               backgroundColor: Colors.white,
-               height: 1.2
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: Text(
-              "Sub texto do Parágrafo 2",
-              style: TextStyle(
-                fontSize: 12,
-                decoration: TextDecoration.none
-              ),
-            ),
-          ),
-          Text("Quisque ultricies erat risus, eu cursus nunc tempor nec. Aenean justo nibh, mollis at consequat non, semper sed neque.",
-             textAlign:TextAlign.justify ,
-              style: TextStyle(
-               fontSize: 16,
-               fontStyle: FontStyle.italic,
-               decoration: TextDecoration.underline,
-               decorationStyle: TextDecorationStyle.solid,
-               decorationColor: Colors.teal,
-               color: Colors.blue,
-               backgroundColor: Colors.white,
-               height: 1.2,
-               fontWeight: FontWeight.normal
-               )
-          ),
-          Image.asset(
-            'images/coffe.jpg',
-            fit: BoxFit.fill,
-
-          ),
-          ElevatedButton(
-              onPressed: () => {
-              },
-              child: Text(
-                "Clique Aqui",
-                style: TextStyle(
-                  color: Colors.red,
-                  decoration: TextDecoration.none
-                ),
-              ),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
-              )
-          )
-        ],
-        mainAxisAlignment: MainAxisAlignment.spaceAround
-        //crossAxisAlignment: CrossAxisAlignment.baseline
-      )
-    ),
-  )
-  );
-}
-*/
